@@ -1,0 +1,73 @@
+@page
+@model ASP_Razor.Pages_Articles.IndexModel
+
+@{
+    ViewData["Title"] = "Quản lý bài viết";
+    int i=0;
+}
+
+<h1>Danh sách bài viết</h1>
+<form method="get" asp-page="IndexArticle">
+    <label>
+        Tìm kiếm
+    </label>
+    <input name = "SearchString" value =""/> 
+    <input type="submit" value="Tìm" class="btn btn-primary" />
+    
+</form>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary ">Thêm bài viết mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>           
+            <th>
+                STT
+            </th>
+            <th>    
+                @Html.DisplayNameFor(model => model.Articles[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles[0].Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles[0].AuthorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Articles[0].CategoryID)
+            </th>
+
+            <th>
+                Tùy chọn 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Articles) {
+        <tr>
+            <td>
+             @(++i) 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                <a asp-page="/Articles/Edit" asp-route-id="@item.ArticleID">Chỉnh sửa</a> |
+                <a asp-page="/Articles/Details" asp-route-id="@item.ArticleID">Chi tiết</a> |
+                <a asp-page="/Articles/Delete" asp-route-id="@item.ArticleID">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

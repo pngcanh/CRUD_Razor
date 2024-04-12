@@ -1,0 +1,45 @@
+@page
+@model ASP_Razor.Pages_Articles.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Articles</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Articles.ArticleID" />
+            <div class="form-group">
+                <label asp-for="Articles.Title" class="control-label"></label>
+                <input asp-for="Articles.Title" class="form-control" />
+                <span asp-validation-for="Articles.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Articles.Content" class="control-label"></label>
+                <input asp-for="Articles.Content" class="form-control" />
+                <span asp-validation-for="Articles.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Articles.Created" class="control-label"></label>
+                <input asp-for="Articles.Created" class="form-control" />
+                <span asp-validation-for="Articles.Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Categories/IndexCate">Quay lại danh sách bài viết</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

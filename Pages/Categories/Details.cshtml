@@ -1,0 +1,25 @@
+@page
+@model ASP_Razor.Pages_Categories.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết</h1>
+
+<div>
+    <h4>Thể loại</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Categories.CategoryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Categories.CategoryName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Categories.CategoryID">Chỉnh sửa</a> |
+    <a asp-page="/Categories/IndexCate">Trở lại danh sách</a>
+</div>

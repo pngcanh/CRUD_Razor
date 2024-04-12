@@ -1,0 +1,42 @@
+@page
+@model ASP_Razor.Pages_Articles.DeleteModel
+@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewData["Title"] = "Xóa bài viết";
+}
+
+<h1>Xóa bài viết</h1>
+
+<h3></h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Articles.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Articles.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Articles.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Articles.Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Articles.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Articles.Created)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Articles.ArticleID" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-page="./IndexArticle">Quay lại danh sách bài viết</a>
+    </form>
+</div>

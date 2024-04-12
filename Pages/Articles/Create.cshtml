@@ -1,0 +1,57 @@
+@page
+@model ASP_Razor.Pages_Articles.CreateModel
+@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Thêm bài viết mới </h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Articles.Title" class="control-label"></label>
+                <input asp-for="Articles.Title" class="form-control" />
+                <span asp-validation-for="Articles.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Articles.Content" class="control-label"></label>
+                <input asp-for="Articles.Content" class="form-control" />
+                <span asp-validation-for="Articles.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Articles.Created" class="control-label"></label>
+                <input asp-for="Articles.Created" class="form-control" />
+                <span asp-validation-for="Articles.Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Articles.CategoryID" class="control-label"></label>
+                @* <select asp-for="Articles.CateID" class="form-control" asp-items="ViewBag.Categories"></select> *@
+                <input asp-for="Articles.CategoryID" class="form-control" />
+                <span asp-validation-for="Articles.CategoryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Articles.AuthorID" class="control-label"></label>
+                @* <select asp-for="Articles.AuID" class="form-control" asp-items="ViewBag.Authors"></select> *@
+                <input asp-for="Articles.AuthorID" class="form-control" />
+                <span asp-validation-for="Articles.AuthorID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./IndexArticle">Quay lại danh sách bài viết</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

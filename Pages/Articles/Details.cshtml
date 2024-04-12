@@ -1,0 +1,16 @@
+@page
+@model ASP_Razor.Pages_Articles.DetailsModel
+
+@{
+    ViewData["Title"] = @Model.Articles.Title;
+}
+
+<h1>@Model.Articles.Title</h1>
+<p> <i>@Html.DisplayFor(model => model.Articles.Created) </i></p>
+<hr>
+@Html.DisplayFor(model => model.Articles.Content)
+<hr>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Articles.ArticleID">Sửa</a> |
+    <a asp-page="./IndexArticle">Quay lại danh sách bài viết</a>
+</div>

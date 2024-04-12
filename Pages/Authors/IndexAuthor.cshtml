@@ -1,0 +1,55 @@
+@page
+@model ASP_Razor.Pages_Authors.IndexModel
+
+@{
+    ViewData["Title"] = "Quản lý tác giả";
+    int i=0;
+}
+
+<h1>Danh sách tác giả</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary ">Thêm tác giả</a>   
+</p>
+<table class="table">
+    <thead>
+        <tr>
+             <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authors[0].AuthorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authors[0].AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Authors[0].Email)
+            </th>
+            <th>
+                Tùy chọn 
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Authors) {
+        <tr>
+        <td> @(++i) </td>
+        <td>
+                @Html.DisplayFor(modelItem => item.AuthorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AuthorID">Chỉnh sửa</a> |
+                <a asp-page="./Details" asp-route-id="@item.AuthorID">Chi tiết</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AuthorID">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
